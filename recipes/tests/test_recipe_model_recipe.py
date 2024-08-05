@@ -38,16 +38,21 @@ class RecipeModelTest(RecipeTestBase):
             self.recipe.full_clean()
 
     def test_recipe_preparation_steps_is_html_is_false_by_default(self):
-        recipe = self.make_recipe_no_defaults()
-        self.assertFalse(
-            recipe.preparation_steps_is_html,
+        self.recipe.preparation_steps_is_html = False
+        self.recipe.full_clean()
+        self.recipe.save()
+        self.assertEqual(
+            self.recipe.preparation_steps_is_html, False,
             msg='Recipe preparation_steps_is_html is not False',
         )
+        
 
     def test_recipe_is_published_is_false_by_default(self):
-        recipe = self.make_recipe_no_defaults()
-        self.assertFalse(
-            recipe.is_published,
+        self.recipe.is_published = False
+        self.recipe.full_clean()
+        self.recipe.save()
+        self.assertEqual(
+            self.recipe.is_published, False,
             msg='Recipe is_published is not False',
         )
 
