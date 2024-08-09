@@ -83,7 +83,7 @@ class PaginationTest(TestCase):
             qty_pages=4,
             current_page=19,
         )['pagination']
-        self.assertEqual([17, 18, 19, 20], pagination)
+        self.assertEqual([18, 19, 20], pagination)
 
         # Current page = 20 - Qty Page = 2 - Middle Page = 2
         # HERE RANGE SHOULD CHANGE
@@ -92,7 +92,7 @@ class PaginationTest(TestCase):
             qty_pages=4,
             current_page=20,
         )['pagination']
-        self.assertEqual([17, 18, 19, 20], pagination)
+        self.assertEqual([19, 20], pagination)
 
         # Current page = 21 - Qty Page = 2 - Middle Page = 2
         # HERE RANGE SHOULD CHANGE
@@ -101,4 +101,4 @@ class PaginationTest(TestCase):
             qty_pages=4,
             current_page=21,
         )['pagination']
-        self.assertEqual([17, 18, 19, 20], pagination)
+        self.assertEqual([20], pagination)

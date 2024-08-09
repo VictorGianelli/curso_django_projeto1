@@ -14,12 +14,16 @@ def make_pagination_range(
 
     start_range_offset = abs(start_range) if start_range < 0 else 0
 
-    if start_range < 0:
+    if start_range < 0 and stop_range >= total_pages:
         start_range = 0
-        stop_range += start_range_offset
+        stop_range = len(page_range)
+    else:
+        if start_range < 0:
+            start_range = 0
+            stop_range += start_range_offset
 
-    if stop_range >= total_pages:
-        start_range = start_range - abs(total_pages - stop_range)
+        if stop_range >= total_pages:
+            stop_range = total_pages
 
     pagination = page_range[start_range:stop_range]
     return {
